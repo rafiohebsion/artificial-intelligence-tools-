@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rafi Ohebsion | Personal Website</title>
+  <style>
+    :root {
+      --bg: #f7f7f2;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #1f6f5f;
+      --accent-light: #dff3ee;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --max: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(247, 247, 242, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .hero {
+      padding: 80px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .fact,
+    .card,
+    .skill,
+    .project,
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .fact {
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+    }
+
+    .fact strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    .hero-photo {
+      background: linear-gradient(145deg, #dff3ee, #ffffff);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .about-card,
+    .contact-card {
+      padding: 24px;
+      border-radius: 20px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .card h3,
+    .project h3 {
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+    }
+
+    .meta {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .card ul,
+    .project ul {
+      padding-left: 18px;
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project {
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .skill {
+      padding: 16px;
+      border-radius: 16px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 40px 0 60px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .projects-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-facts {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand">Rafi Ohebsion</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Real Estate • Entrepreneurship • Student Leadership</div>
+          <h1>Hi, I’m Rafi Ohebsion.</h1>
+          <p>
+            I’m a Tulane student with interests in real estate, business, leadership, and building strong relationships.
+            I enjoy hands-on work, solving real problems, and learning through experience whether that means helping clients,
+            leading a team, or creating new projects.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#contact">Connect With Me</a>
+            <a class="btn btn-secondary" href="https://github.com/rafiohebsion" target="_blank">View GitHub</a>
+          </div>
+
+          <div class="quick-facts">
+            <div class="fact"><strong>School</strong>Tulane University</div>
+            <div class="fact"><strong>Focus</strong>Real estate, business, and entrepreneurship</div>
+            <div class="fact"><strong>Experience</strong>Residential real estate and client-facing work</div>
+            <div class="fact"><strong>Leadership</strong>Varsity tennis captain and team-oriented worker</div>
+          </div>
+        </div>
+
+        <div class="hero-photo">
+          <div>
+            <h3 style="margin-bottom: 10px; color: var(--text);">Add Your Photo Here</h3>
+            <p>
+              Replace this box with a headshot or personal image later if you want.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          I like work that feels real and practical. A lot of what drives me is the chance to help people,
+          improve something, and keep growing through experience.
+        </p>
+        <div class="about-card">
+          <p>
+            My background includes residential real estate, especially helping first-time home buyers and working with developers.
+            I’ve also built leadership skills through sports, group work, and service. I value communication, consistency, and learning by doing.
+          </p>
+          <br />
+          <p>
+            Outside of academics and work, I care about fitness, teamwork, and personal growth. I want this website to be a place where people can
+            quickly learn who I am, what I care about, and the kind of work I want to keep doing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">
+          A few areas where I’ve built experience and responsibility.
+        </p>
+
+        <div class="timeline">
+          <div class="card">
+            <div class="meta">Residential Real Estate</div>
+            <h3>Agent Support and Client-Facing Work</h3>
+            <p class="muted">
+              Worked on the residential side of real estate through inspections, lender meetings, client communication, and deal support.
+            </p>
+            <ul>
+              <li>Helped manage moving parts across the home-buying process.</li>
+              <li>Built communication skills through direct interaction with clients and professionals.</li>
+              <li>Learned how details, timing, and trust matter in real transactions.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="meta">Leadership</div>
+            <h3>Varsity Tennis Captain</h3>
+            <p class="muted">
+              Led by example, supported teammates, and helped create a competitive but positive team environment.
+            </p>
+            <ul>
+              <li>Strengthened leadership and accountability.</li>
+              <li>Learned how to motivate others while keeping standards high.</li>
+              <li>Balanced performance, teamwork, and discipline.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="meta">Service and Hands-On Work</div>
+            <h3>Community and Maintenance Experience</h3>
+            <p class="muted">
+              Gained hands-on experience through maintenance work and service-oriented volunteering, including helping prepare and distribute meals.
+            </p>
+            <ul>
+              <li>Developed problem-solving skills in real-world settings.</li>
+              <li>Learned the value of reliability and practical action.</li>
+              <li>Built empathy through work centered on people’s needs.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">
+          These can be class projects, personal work, business ideas, or anything that shows initiative.
+        </p>
+
+        <div class="projects-grid">
+          <div class="project">
+            <h3>Financial Tracker App</h3>
+            <p class="muted">
+              Built a personal finance web app with expense tracking, savings goals, filters, and local storage.
+            </p>
+            <div class="tag-row">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="project">
+            <h3>Personal Website</h3>
+            <p class="muted">
+              Created a one-page portfolio website to introduce myself, highlight experience, and share my goals.
+            </p>
+            <div class="tag-row">
+              <span class="tag">GitHub Pages</span>
+              <span class="tag">Web Design</span>
+              <span class="tag">Branding</span>
+            </div>
+          </div>
+
+          <div class="project">
+            <h3>Real Estate Growth Portfolio</h3>
+            <p class="muted">
+              A section you can later expand with listings, market analysis, sales work, or development-related experience.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Real Estate</span>
+              <span class="tag">Sales</span>
+              <span class="tag">Analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-subtitle">
+          A few strengths that reflect how I work.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill">Communication</div>
+          <div class="skill">Leadership</div>
+          <div class="skill">Client Relations</div>
+          <div class="skill">Problem Solving</div>
+          <div class="skill">Teamwork</div>
+          <div class="skill">Adaptability</div>
+          <div class="skill">Entrepreneurship</div>
+          <div class="skill">Work Ethic</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Reach out if you want to connect, collaborate, or learn more.
+        </p>
+        <div class="contact-card">
+          <p><strong>Email:</strong> yourname@example.com</p>
+          <p><strong>LinkedIn:</strong> linkedin.com/in/yourprofile</p>
+          <p><strong>GitHub:</strong> github.com/rafiohebsion</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Rafi Ohebsion. Built for GitHub Pages.</p>
+    </div>
+  </footer>
+</body>
+</html>
